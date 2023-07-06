@@ -1,0 +1,21 @@
+def count_skills(tree, required):
+    skils = set()
+    for r in required:
+        while r not in skils:
+            skils.add(r)
+            r = tree[r]
+    return len(skils)
+
+//
+function countSkills(tree, required) {
+  const learned = new Set();
+
+  for (let req of required) {
+    while (!learned.has(req)) {
+      learned.add(req);
+      req = tree[req];
+    }
+  }
+
+  return learned.size;
+}
