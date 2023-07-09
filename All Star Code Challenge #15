@@ -1,0 +1,18 @@
+function rotate(str) {
+  const rotations = [];
+  
+  for (let i = 1; i < str.length+1; i++) {
+    const rotated = str.slice(i) + str.slice(0, i);
+    rotations.push(rotated);
+  }  
+  return rotations;
+}
+//
+def rotate(string):
+    rotations = []
+
+    for i in range(1, len(string) + 1):
+        rotated = string[i:] + string[:i]
+        rotations.append(rotated)
+
+    return rotations
