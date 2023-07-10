@@ -9,3 +9,12 @@ function findOutlier(array) {
     }
   }
 }
+//
+def find_outlier(array):
+    # Check the first three numbers to determine if the array is odd or even
+    is_even = sum(1 for num in array[:3] if num % 2 == 0) >= 2
+
+    # Find the outlier based on whether the array is odd or even
+    for num in array:
+        if (is_even and num % 2 != 0) or (not is_even and num % 2 == 0):
+            return num
