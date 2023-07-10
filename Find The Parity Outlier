@@ -1,0 +1,11 @@
+function findOutlier(array) {
+  // Check the first three numbers to determine if the array is odd or even
+  const isEven = array.slice(0, 3).filter(num => num % 2 === 0).length >= 2;
+
+  // Find the outlier based on whether the array is odd or even
+  for (let i = 0; i < array.length; i++) {
+    if ((isEven && array[i] % 2 !== 0) || (!isEven && array[i] % 2 === 0)) {
+      return array[i];
+    }
+  }
+}
