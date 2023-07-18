@@ -1,0 +1,21 @@
+function binMul(m, n) {
+  
+  if (!m || !n)
+    return [];
+    
+  if (m < n)
+    return binMul(n, m);
+  
+  let res = [];
+  
+  while (m) {
+    if (m % 2) { 
+      res.unshift(n);
+    }
+    m = m / 2 | 0;
+    n = n * 2;
+  }
+  
+  return res;
+  
+}
