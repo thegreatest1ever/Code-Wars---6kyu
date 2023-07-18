@@ -19,3 +19,32 @@ function binMul(m, n) {
   return res;
   
 }
+//
+def bin_mul(m, n):
+  """
+  Returns a list of the binary representation of m * n.
+
+  Args:
+    m: The first integer.
+    n: The second integer.
+
+  Returns:
+    A list of the binary representation of m * n.
+  """
+
+  if m == 0 or n == 0:
+    return []
+
+  if m < n:
+    return bin_mul(n, m)
+
+  res = []
+
+  while m > 0:
+    if m % 2 == 1:
+      res.append(n)
+    m >>= 1
+    n <<= 1
+    res.sort(reverse=True)
+
+  return res
