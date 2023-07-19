@@ -1,0 +1,10 @@
+//to be understood later
+const diagonal = arr => {
+  const len = arr.length - 1, res = [];
+  for(let i = len, j = len; i >= 0; j?j--:i--) {
+    for (let n = i, m = j; n >= j, m <= i; m++, n--) {
+      res.push(arr[m][n]);
+    }
+  }
+  return res;
+}
