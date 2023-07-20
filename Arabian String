@@ -3,3 +3,8 @@ function camelize(str) {
     return s[0].toUpperCase() + s.substr(1).toLowerCase()
   }).join('')
 }
+//
+import re
+
+def camelize(s):
+    return "".join([w.capitalize() for w in re.split("\W|_", s)])
