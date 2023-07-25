@@ -15,3 +15,24 @@ function getCellAddresses(range) {
   
   return res;
 }
+//
+import re
+
+def get_cell_addresses(range_str):
+    def split(cell_str):
+        return re.findall(r'[A-Z]|\d+', cell_str)
+
+    a, b = range_str.split(":")
+    c0, r0 = split(a)
+    c1, r1 = split(b)
+    r0, r1 = int(r0), int(r1)
+
+    res = []
+    if r1 < r0 or (r1 == r0 and c1 == c0):
+        return res
+
+    for r in range(r0, r1 + 1):
+        for c in range(ord(c0), ord(c1) + 1):
+            res.append(f"{chr(c)}{r}")
+
+    return res
