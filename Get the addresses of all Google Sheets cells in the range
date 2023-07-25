@@ -1,0 +1,17 @@
+function getCellAddresses(range) {
+  
+  let [a, b] = range.split(":");
+  let split = s => s.match(/[A-Z]|\d+/g);
+  let [c0, r0] = split(a);
+  let [c1, r1] = split(b);
+  [r0, r1] = [r0, r1].map(Number);
+  
+  let res = [];
+  if (r1 < r0 || (r1 == r0 && c1 == c0)) return res;
+  
+  for (let r = r0; r <= r1; r++) 
+    for (let c = c0.charCodeAt(); c <= c1.charCodeAt(); c++)
+      res.push(`${String.fromCharCode(c)}${r}`);
+  
+  return res;
+}
