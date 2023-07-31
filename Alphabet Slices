@@ -18,3 +18,25 @@ function solution(str) {
   }
   return result.join("");
 }
+//
+def reverse_alphabet_substrings(input_string):
+    temp_arr = []
+    result = []
+
+    def is_consecutive_alphabet_substring(substring):
+        return substring.isalpha() and substring.islower()
+
+    for char in input_string:
+        if not temp_arr:
+            temp_arr.append(char)
+        elif temp_arr[-1].isalpha() and ord(temp_arr[-1]) + 1 == ord(char):
+            temp_arr.append(char)
+        else:
+            if is_consecutive_alphabet_substring(''.join(temp_arr)):
+                result.append(''.join(temp_arr[::-1]))
+            temp_arr = [char]
+
+    if is_consecutive_alphabet_substring(''.join(temp_arr)):
+        result.append(''.join(temp_arr[::-1]))
+
+    return ''.join(result)
