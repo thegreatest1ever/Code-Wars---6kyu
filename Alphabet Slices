@@ -1,0 +1,20 @@
+function solution(str) {
+  let temp_arr = [];
+  let result = [];
+  str.split("").forEach((val, index) => {
+    if (!temp_arr.length) {
+      temp_arr.push(val);
+    } else if (temp_arr.length > 0 && temp_arr.at(-1).charCodeAt() + 1 === val.charCodeAt(0)) {
+      temp_arr.push(val);
+    } else {
+      result.push(temp_arr.reverse().join(""));
+      temp_arr.length = 0;
+      temp_arr.push(val);
+    }
+  });
+
+  if (temp_arr.length !== 0) {
+    result.push(temp_arr.reverse().join(""));
+  }
+  return result.join("");
+}
