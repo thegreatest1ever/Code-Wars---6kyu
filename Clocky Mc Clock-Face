@@ -1,0 +1,9 @@
+function whatTimeIsIt(angle) {
+  const hours = angle / 30;
+  const minutes = Math.floor((angle % 30) / 0.5);
+  if (angle < 30) {
+    return `12:${minutes.toString().padStart(2, "0")}`;
+  } else {
+    return `${Math.floor(hours).toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+  }
+}
