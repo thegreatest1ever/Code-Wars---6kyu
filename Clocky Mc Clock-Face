@@ -7,3 +7,11 @@ function whatTimeIsIt(angle) {
     return `${Math.floor(hours).toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
   }
 }
+//
+def what_time_is_it(angle):
+    hours = angle / 30
+    minutes = int((angle % 30) / 0.5)
+    if angle < 30:
+        return f"12:{str(minutes).zfill(2)}"
+    else:
+        return f"{int(hours):02}:{str(minutes).zfill(2)}"
