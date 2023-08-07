@@ -1,0 +1,17 @@
+function minDistance(n){
+  let arr = [];
+  let res = [];
+  
+  for (let i = 1; i <= n; i++) {
+    if (n % i ===0) {
+      arr.push(i);
+    }
+  }
+  
+  for (let j = 1; j <  arr.length; j++) {
+    res.push(Math.abs(arr[j] - arr[j-1]));
+  }
+  
+  
+  return Math.min(...res);
+}
