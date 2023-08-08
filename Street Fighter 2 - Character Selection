@@ -1,0 +1,18 @@
+function streetFighterSelection(fighters, position, moves){
+  let result = [];
+  let row = position[0];
+  let col = position[1];
+  for(let i = 0; i < moves.length; i++){
+    if(moves[i] === 'up'){
+      row = Math.max(0, row - 1);
+    } else if(moves[i] === 'down'){
+      row = Math.min(1, row + 1);
+    } else if(moves[i] === 'left'){
+      col = (col - 1 + fighters[row].length) % fighters[row].length;
+    } else if(moves[i] === 'right'){
+      col = (col + 1) % fighters[row].length;
+    }
+    result.push(fighters[row][col]);
+  }
+  return result;
+}
