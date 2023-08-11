@@ -13,3 +13,18 @@ function logisticMap(width, height, xList, yList) {
   }
   return result;
 }
+//
+def logistic_map(width, height, x_list, y_list):
+    result = [[None for _ in range(width)] for _ in range(height)]
+
+    if not x_list and not y_list:
+        return result
+
+    for i in range(height):
+        for j in range(width):
+            result[i][j] = min(
+                [abs(i - y) + abs(j - x) for x, y in zip(x_list, y_list)]
+            )
+
+    return result
+
