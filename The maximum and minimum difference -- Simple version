@@ -21,4 +21,25 @@ function maxAndMin(arr1, arr2) {
 
   // Return an array containing the max and min values
   return [maxVal, minVal];
+
+//
+def max_and_min(arr1, arr2):
+    # Initialize the max and min values
+    max_val = float('-inf')
+    min_val = float('inf')
+
+    # Iterate over all the pairs of elements in the input arrays
+    for i in arr1:
+        for j in arr2:
+            # Calculate the absolute difference between the two elements
+            diff = abs(i - j)
+
+            # Update the max and min values if necessary
+            if diff > max_val:
+                max_val = diff
+            if diff < min_val:
+                min_val = diff
+
+    # Return a tuple containing the max and min values
+    return [max_val, min_val]
 }
