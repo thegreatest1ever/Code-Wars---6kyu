@@ -1,0 +1,19 @@
+function findGatecrashers(people, invitations) {
+
+  let crashers = new Set(people);
+  
+  for (let invite of invitations) {
+  
+    crashers.delete(invite.member);
+    
+    for (let guest of invite.guests) {
+    
+      crashers.delete(guest);
+      
+    }
+    
+  }
+  
+  return Array.from(crashers);
+  
+}
