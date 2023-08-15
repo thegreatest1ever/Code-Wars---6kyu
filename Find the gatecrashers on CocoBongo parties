@@ -17,3 +17,24 @@ function findGatecrashers(people, invitations) {
   return Array.from(crashers);
   
 }
+//
+def find_gatecrashers(party_members, invitations):
+    crashers = set(party_members)
+    
+    for invite in invitations:
+        crashers.discard(invite[0])  # invite[0] is the member
+        
+        for guest in invite[1]:
+            crashers.discard(guest)
+            
+    return list(crashers)
+
+# Test example
+party_members = [0, 1, 2, 3, 4]
+invitations = [
+    (0, [1, 2]),
+    (2, [3])
+]
+gatecrashers = find_gatecrashers(party_members, invitations)
+print(gatecrashers)  # Output: [4]
+
