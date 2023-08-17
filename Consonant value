@@ -26,3 +26,30 @@ function solve(s) {
   // Return the highest value of any of the substrings
   return maxValue;
 }
+//
+def solve(s):
+    # Assign values to all letters from a to z
+    letter_values = {chr(i): i - 96 for i in range(97, 123)}
+
+    # Initialize vowels and consonants
+    vowels = "aeiou"
+    consonants = []
+
+    # Initialize maximum value
+    max_value = 0
+
+    # Iterate through all letters in s
+    for char in s:
+        # If the current letter is a consonant, add it to the consonants list
+        if char not in vowels:
+            consonants.append(char)
+            # Calculate substring value
+            substring_value = sum(letter_values[c] for c in consonants)
+            # Update maximum value
+            max_value = max(max_value, substring_value)
+        else:
+            # If the current letter is a vowel, reset the consonants list
+            consonants = []
+
+    # Return the highest value of any of the substrings
+    return max_value
