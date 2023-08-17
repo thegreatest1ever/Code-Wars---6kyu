@@ -53,3 +53,37 @@ def solve(s):
 
     # Return the highest value of any of the substrings
     return max_value
+
+//
+function solve(s: string): number {
+    // Assign values to all letters from a to z
+    const letterValues: { [key: string]: number } = {};
+    for (let i = 97; i <= 122; i++) {
+        letterValues[String.fromCharCode(i)] = i - 96;
+    }
+
+    // Initialize vowels and consonants
+    const vowels: string = "aeiou";
+    let consonants: string[] = [];
+
+    // Initialize maximum value
+    let maxValue: number = 0;
+
+    // Iterate through all letters in s
+    for (const char of s) {
+        // If the current letter is a consonant, add it to the consonants array
+        if (!vowels.includes(char)) {
+            consonants.push(char);
+            // Calculate substring value
+            const substringValue: number = consonants.reduce((a, b) => a + letterValues[b], 0);
+            // Update maximum value
+            maxValue = Math.max(maxValue, substringValue);
+        } else {
+            // If the current letter is a vowel, reset the consonants array
+            consonants = [];
+        }
+    }
+
+    // Return the highest value of any of the substrings
+    return maxValue;
+}
