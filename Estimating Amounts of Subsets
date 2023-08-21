@@ -3,3 +3,8 @@ function estSubsets(arr) {
   let n = set.size;
   return 2 ** n - 1;
 }
+//
+def est_subsets(arr):
+    unique_elements = set(arr)
+    n = len(unique_elements)
+    return 2 ** n - 1
