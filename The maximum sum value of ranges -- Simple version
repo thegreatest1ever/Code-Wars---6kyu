@@ -14,3 +14,12 @@ function maxSum(arr,range){
 function maxSum(arr,range){
   return Math.max(...range.map(i => arr.slice(i[0], i[1] + 1).reduce((a, b) => a + b)))
 }
+//
+def max_sum(arr, ranges):
+    overall_max = float("-inf")
+    
+    for r in ranges:
+        current_sum = sum(arr[r[0]:r[1] + 1])
+        overall_max = max(overall_max, current_sum)
+    
+    return overall_max
