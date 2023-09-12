@@ -20,7 +20,22 @@ function nameInStr(str, name) {
   // If we reached this point, not all characters in 'str' were found in 'name' in order
   return false;
 }
-
-const input = ['neamivlyoor jmphmna ailoo yit rtbyelayideyltrt yretltwjyiotatt vlj t iaybnvojprv  mai eryn', 'Ricardo'];
-const result = nameInStr(input[0], input[1]);
-console.log(result); // Output: true
+//
+def name_in_str(string, name):
+    string = string.lower()  # Convert 'string' to lowercase
+    name = name.lower()  # Convert 'name' to lowercase
+    
+    name_index = 0  # Initialize an index to track the position in the 'name' string
+    
+    # Loop through each character in 'string'
+    for char in string:
+        # Check if the current character in 'string' matches the character in 'name' at the current index
+        if char == name[name_index]:
+            name_index += 1  # If there's a match, increment the 'name_index'
+            
+            # If 'name_index' reaches the length of 'name', it means all characters in 'string' are found in 'name' in order
+            if name_index == len(name):
+                return True
+    
+    # If we reached this point, not all characters in 'string' were found in 'name' in order
+    return False
