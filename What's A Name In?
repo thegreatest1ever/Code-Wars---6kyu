@@ -1,0 +1,26 @@
+function nameInStr(str, name) {
+  str = str.toLowerCase(); // Convert 'str' to lowercase
+  name = name.toLowerCase(); // Convert 'name' to lowercase
+
+  let nameIndex = 0; // Initialize an index to track the position in the 'name' string
+  
+  // Loop through each character in 'str'
+  for (let i = 0; i < str.length; i++) {
+    // Check if the current character in 'str' matches the character in 'name' at the current index
+    if (str[i] === name[nameIndex]) {
+      nameIndex++; // If there's a match, increment the 'nameIndex'
+      
+      // If 'nameIndex' reaches the length of 'name', it means all characters in 'str' are found in 'name' in order
+      if (nameIndex === name.length) {
+        return true;
+      }
+    }
+  }
+  
+  // If we reached this point, not all characters in 'str' were found in 'name' in order
+  return false;
+}
+
+const input = ['neamivlyoor jmphmna ailoo yit rtbyelayideyltrt yretltwjyiotatt vlj t iaybnvojprv  mai eryn', 'Ricardo'];
+const result = nameInStr(input[0], input[1]);
+console.log(result); // Output: true
