@@ -1,0 +1,8 @@
+for (const char of phraseChars) {
+    for (const key in keyboardLayout) {
+      if (keyboardLayout[key].includes(char)) {
+        // Find the key that contains the character and add its position + 1 to the total presses
+        totalPresses += keyboardLayout[key].indexOf(char) + 1;
+      }
+    }
+  }
