@@ -31,3 +31,33 @@ function presses(phrase) {
 
   return totalPresses;
 }
+//
+def presses(phrase):
+    # Define the layout of the multi-tap keyboard
+    keyboard_layout = {
+        '1': ['1'],
+        '2': ['a', 'b', 'c', '2'],
+        '3': ['d', 'e', 'f', '3'],
+        '4': ['g', 'h', 'i', '4'],
+        '5': ['j', 'k', 'l', '5'],
+        '6': ['m', 'n', 'o', '6'],
+        '7': ['p', 'q', 'r', 's', '7'],
+        '8': ['t', 'u', 'v', '8'],
+        '9': ['w', 'x', 'y', 'z', '9'],
+        '0': [' ', '0'],
+        '#': ['#'],
+        '*': ['*']
+    }
+
+    # Convert the phrase to lowercase and split it into characters
+    phrase_chars = phrase.lower()
+
+    total_presses = 0
+
+    for char in phrase_chars:
+        for key in keyboard_layout:
+            if char in keyboard_layout[key]:
+                # Find the key that contains the character and add its position + 1 to the total presses
+                total_presses += keyboard_layout[key].index(char) + 1
+
+    return total_presses
