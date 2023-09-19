@@ -1,0 +1,30 @@
+function isPrime(num) {
+  if (num <= 1) return false;
+  if (num <= 3) return true;
+
+  if (num % 2 === 0 || num % 3 === 0) return false;
+
+  for (let i = 5; i * i <= num; i += 6) {
+    if (num % i === 0 || num % (i + 2) === 0) return false;
+  }
+
+  return true;
+}
+
+function hasOnlyPrimeDigits(num) {
+  const primeDigits = new Set([2, 3, 5, 7]);
+  const digits = num.toString().split('').map(Number);
+  return digits.every((digit) => primeDigits.has(digit));
+}
+
+function notPrimes(a, b) {
+  const result = [];
+
+  for (let num = a; num < b; num++) {
+    if (!isPrime(num) && hasOnlyPrimeDigits(num)) {
+      result.push(num);
+    }
+  }
+
+  return result;
+}
