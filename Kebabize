@@ -27,3 +27,26 @@ function kebabize(string) {
   // Return the result string.
   return result;
 }
+//
+import re
+
+def kebabize(string):
+    # Create an empty string to store the result.
+    result = ""
+
+    # Iterate over the characters in the string.
+    for char in string:
+        # Check if the character is a letter.
+        if re.match(r'[a-zA-Z]', char):
+            # If the current character is uppercase, add a hyphen and the lowercase version of the character to the result string.
+            if char.isupper():
+                if result and result[-1] != "-":
+                    # Add a hyphen unless it's the first character.
+                    result += "-"
+                result += char.lower()
+            # Otherwise, simply add the current character to the result string.
+            else:
+                result += char
+
+    # Return the result string.
+    return result
