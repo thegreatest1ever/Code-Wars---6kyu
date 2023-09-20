@@ -1,0 +1,29 @@
+function kebabize(string) {
+  // Create an empty string to store the result.
+  let result = "";
+
+  // Iterate over the characters in the string.
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i];
+    
+    // Check if the character is a letter.
+    if (/[a-zA-Z]/.test(char)) {
+      // If the current character is uppercase, add a hyphen and the lowercase version of the character to the result string.
+      if (char === char.toUpperCase()) {
+        if (i !== 0) {
+          // Add a hyphen unless it's the first character.
+          result += "-";
+        }
+        result += char.toLowerCase();
+      }
+
+      // Otherwise, simply add the current character to the result string.
+      else {
+        result += char;
+      }
+    }
+  }
+
+  // Return the result string.
+  return result;
+}
