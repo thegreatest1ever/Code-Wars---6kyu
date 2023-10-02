@@ -15,3 +15,18 @@ function nbMonths(startPriceOld, startPriceNew, savingperMonth, percentLossByMon
 
   return [months, Math.round(available)];
 }
+//
+def nb_months(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth):
+    months = 0
+    available = startPriceOld - startPriceNew
+
+    while available < 0:
+        months += 1
+        if months % 2 == 0:
+            percentLossByMonth += 0.5
+
+        startPriceOld -= startPriceOld * (percentLossByMonth / 100)
+        startPriceNew -= startPriceNew * (percentLossByMonth / 100)
+        available = startPriceOld + (savingperMonth * months) - startPriceNew
+
+    return [months, round(available)]
