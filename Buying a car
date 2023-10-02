@@ -1,0 +1,17 @@
+function nbMonths(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth) {
+  let months = 0;
+  let available = startPriceOld - startPriceNew;
+
+  while (available < 0) {
+    months++;
+    if (months % 2 === 0) {
+      percentLossByMonth += 0.5;
+    }
+
+    startPriceOld -= startPriceOld * (percentLossByMonth / 100);
+    startPriceNew -= startPriceNew * (percentLossByMonth / 100);
+    available = startPriceOld + (savingperMonth * months) - startPriceNew;
+  }
+
+  return [months, Math.round(available)];
+}
