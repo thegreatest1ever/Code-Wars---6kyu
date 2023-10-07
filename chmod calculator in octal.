@@ -25,3 +25,24 @@ function chmodCalculator(permissions) {
   }
   return octal.toString().padStart(3, '0');
 }
+//
+def get_octal(permission):
+    octal = 0
+    if permission[0] == 'r':
+        octal += 4
+    if permission[1] == 'w':
+        octal += 2
+    if permission[2] == 'x':
+        octal += 1
+    return octal
+
+def chmod_calculator(permissions):
+    octal = 0
+    if 'user' in permissions:
+        octal += get_octal(permissions['user']) * 100
+    if 'group' in permissions:
+        octal += get_octal(permissions['group']) * 10
+    if 'other' in permissions:
+        octal += get_octal(permissions['other'])
+    return str(octal).zfill(3)
+
