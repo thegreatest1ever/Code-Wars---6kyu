@@ -1,0 +1,27 @@
+function getOctal(permission) {
+  let octal = 0;
+  if (permission[0] === 'r') {
+    octal += 4;
+  }
+  if (permission[1] === 'w') {
+    octal += 2;
+  }
+  if (permission[2] === 'x') {
+    octal += 1;
+  }
+  return octal;
+}
+
+function chmodCalculator(permissions) {
+  let octal = 0;
+  if ('user' in permissions) {
+    octal += getOctal(permissions['user']) * 100;
+  }
+  if ('group' in permissions) {
+    octal += getOctal(permissions['group']) * 10;
+  }
+  if ('other' in permissions) {
+    octal += getOctal(permissions['other']);
+  }
+  return octal.toString().padStart(3, '0');
+}
