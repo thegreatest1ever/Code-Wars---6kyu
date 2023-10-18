@@ -1,0 +1,42 @@
+function common(a,b,c){
+  //Input is three arrays of integers
+  
+  //Variable to hold the sum
+  let sum = 0;
+  
+  //Really only need to iterate over the first array
+  for (let i = 0; i < a.length; i++) {
+    //If the index of that element > -1 in both the other two arrays, add to sum
+    if (b.indexOf(a[i]) > -1 && c.indexOf(a[i]) > -1) {
+      sum += a[i];
+      //slice out that integer from those arrays
+      b.splice(b.indexOf(a[i]),1);
+      c.splice(c.indexOf(a[i]),1);
+    } 
+  }
+  return sum;
+}
+
+ChatGPT
+The code you provided is a valid approach to find the sum of elements that are common in all three arrays. It iterates over the first array and checks if each element is present in both of the other two arrays using the indexOf method. If a common element is found, it adds that element to the sum and removes it from the other two arrays using the splice method.
+
+Here's how the code works:
+
+Initialize a sum variable to store the sum of common elements.
+
+Iterate over the elements in the first array (a).
+
+For each element in array a, check if it exists in both array b and array c using the indexOf method. If it's present in both arrays, it's a common element.
+
+If a common element is found, add it to the sum and remove it from arrays b and c to prevent duplicate counting.
+
+After the loop, return the sum as the result.
+
+While this code is functional, it's worth noting that the indexOf method and subsequent splice operations can be relatively inefficient for large arrays, especially when removing elements from the middle of an array, as it requires shifting the remaining elements. If the arrays are large, you might experience performance issues.
+
+For large arrays, you may still consider using some of the earlier optimization methods, such as using a frequency map or sets for faster lookups, as they are generally more efficient.
+
+
+
+
+
