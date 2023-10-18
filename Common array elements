@@ -40,6 +40,33 @@ from collections import Counter
 def common(a,b,c):
     return sum((Counter(a) & Counter(b) & Counter(c)).elements())
 
+//
 
+function common(a, b, c) {
+  // Function to count the frequency of elements in an array
+  function countFrequency(arr) {
+    const frequency = {};
+    for (const element of arr) {
+      frequency[element] = (frequency[element] || 0) + 1;
+    }
+    return frequency;
+  }
 
+  // Count the frequency of elements in each array
+  const countA = countFrequency(a);
+  const countB = countFrequency(b);
+  const countC = countFrequency(c);
 
+  // Initialize the result
+  let totalSum = 0;
+
+  // Iterate through the keys (unique elements) in countA
+  for (const key in countA) {
+    if (countA[key] && countB[key] && countC[key]) {
+      const minCount = Math.min(countA[key], countB[key], countC[key]);
+      totalSum += parseInt(key) * minCount;
+    }
+  }
+
+  return totalSum;
+}
