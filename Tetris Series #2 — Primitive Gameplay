@@ -21,3 +21,29 @@ function tetris(moves) {
   return min;
 
 }
+//
+def tetris(moves):
+    grid = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    min_height = 0
+    max_height = 0
+
+    for move in moves:
+        direction = move[1]
+        offset = int(move[2])
+        block_type = int(move[0])
+
+        # Calculate the position for the block
+        pos = 4 + (-1 if direction == 'L' else 1) * offset
+
+        # Update the grid by adding the height of the block
+        grid[pos] += block_type
+
+        # Update min and max heights
+        min_height = min(grid)
+        max_height = max(grid)
+
+        # Check if the game is over
+        if max_height - min_height >= 30:
+            break
+
+    return min_height
