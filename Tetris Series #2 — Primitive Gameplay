@@ -1,0 +1,23 @@
+function tetris(moves) {
+
+  let grid = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+  ,    min = 0
+  ,    max = 0;
+  
+  for (let move of moves) {
+  
+    let pos = 4 + (move[1] === 'L' ? -1 : 1) * +move[2];
+    grid[pos] += +move[0];
+
+    min = Math.min(...grid);
+    max = Math.max(...grid);
+    
+    if (max - min >= 30)
+      break;
+
+  }
+  
+
+  return min;
+
+}
