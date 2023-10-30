@@ -1,0 +1,28 @@
+function comp(array1, array2) {
+  // Check if either array is null or their lengths are different
+  if (array1 === null || array2 === null || array1.length !== array2.length) {
+    return false;
+  }
+
+  // Create a copy of array2
+  const copyArray2 = array2.slice();
+
+  // Iterate through array1
+  for (let i = 0; i < array1.length; i++) {
+    // Find the square of the current element in array1
+    const square = array1[i] * array1[i];
+
+    // Check if the squared value exists in array2
+    const index = copyArray2.indexOf(square);
+
+    // If the squared value is found, remove it from the copy of array2
+    if (index !== -1) {
+      copyArray2.splice(index, 1);
+    } else {
+      return false; // If not found, return false
+    }
+  }
+
+  // If we reach this point, all elements in array1 have matching squares in array2
+  return true;
+}
