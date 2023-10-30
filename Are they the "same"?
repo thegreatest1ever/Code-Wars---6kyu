@@ -26,3 +26,25 @@ function comp(array1, array2) {
   // If we reach this point, all elements in array1 have matching squares in array2
   return true;
 }
+//
+def comp(array1, array2):
+    # Check if either array is None or their lengths are different
+    if array1 is None or array2 is None or len(array1) != len(array2):
+        return False
+
+    # Create a copy of array2
+    copy_array2 = array2.copy()
+
+    # Iterate through array1
+    for i in array1:
+        # Find the square of the current element in array1
+        square = i * i
+
+        # Check if the squared value exists in copy_array2
+        if square in copy_array2:
+            copy_array2.remove(square)
+        else:
+            return False  # If not found, return False
+
+    # If we reach this point, all elements in array1 have matching squares in copy_array2
+    return True
