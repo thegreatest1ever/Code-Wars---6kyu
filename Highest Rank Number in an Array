@@ -1,0 +1,25 @@
+function highestRank(arr) {
+  // Create a hash table to store element occurrences
+  const occurrenceMap = {};
+  let highestCount = 0;
+  let highestElement = null;
+
+  // Iterate through the array and update occurrences
+  for (let element of arr) {
+    if (element in occurrenceMap) {
+      occurrenceMap[element]++;
+    } else {
+      occurrenceMap[element] = 1;
+    }
+
+    // Check if the current element has the highest occurrence or value
+    if (occurrenceMap[element] > highestCount) {
+      highestCount = occurrenceMap[element];
+      highestElement = element;
+    } else if (occurrenceMap[element] === highestCount && element > highestElement) {
+      highestElement = element;
+    }
+  }
+
+  return highestElement;
+}
