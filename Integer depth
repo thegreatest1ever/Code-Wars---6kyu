@@ -18,3 +18,23 @@ function computeDepth(x) {
     }
   }
 }
+//
+
+def compute_depth(x):
+    depth = 0
+    recorded_digits = []
+
+    while True:
+        depth += 1
+        product = x * depth
+        digits = [int(d) for d in str(product)]
+
+        for digit in digits:
+            if digit not in recorded_digits:
+                recorded_digits.append(digit)
+
+        if len(recorded_digits) == 10:
+            return depth
+
+print(compute_depth(12))
+
