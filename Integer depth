@@ -1,0 +1,20 @@
+function computeDepth(x) {
+  let depth = 0;
+  let recordedDigits = [];
+
+  while (true) {
+    depth++;
+    let product = x * depth;
+    let digits = product.toString().split("");
+
+    for (let digit of digits) {
+      if (!recordedDigits.includes(digit)) {
+        recordedDigits.push(digit);
+      }
+    }
+
+    if (recordedDigits.length === 10) {
+      return depth;
+    }
+  }
+}
