@@ -28,14 +28,26 @@ function check(board) {
     return false; // If 'q' or 'k' is missing
   }
 }
+//
+def is_straight_line(x1, y1, x2, y2):
+    return x1 == x2 or y1 == y2 or abs(x1 - x2) == abs(y1 - y2)
 
-// Example usage:
-const board = [
-  ['*', '*', '*', '*', '*'],
-  ['*', 'q', '*', '*', '*'],
-  ['*', '*', '*', 'k', '*'],
-  ['*', '*', '*', '*', '*'],
-  ['*', '*', '*', '*', '*']
-];
+def check(board):
+    # Function to find indices of 'q' and 'k' positions
+    def find_index(matrix, value):
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
+                if matrix[i][j] == value:
+                    return i, j
+        return None
 
-console.log(check(board)); // Output: true or false based on 'q' and 'k' position
+    # Find indices of 'q' and 'k'
+    queen_position = find_index(board, 'q')
+    king_position = find_index(board, 'k')
+
+    # Check if 'q' and 'k' are in a straight line or diagonal
+    if queen_position is not None and king_position is not None:
+        return is_straight_line(queen_position[0], queen_position[1],
+                                king_position[0], king_position[1])
+    else:
+        return False  # If 'q' or 'k' is missing
