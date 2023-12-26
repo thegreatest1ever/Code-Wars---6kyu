@@ -1,0 +1,29 @@
+function balance(left, right) {
+  const weightMap = { '!': 2, '?': 3 };
+
+  let leftWeight = 0;
+  let rightWeight = 0;
+
+  // Calculate weight for left side
+  for (const char of left) {
+    leftWeight += weightMap[char] || 1; // Use default weight of 1 for other characters
+  }
+
+  // Calculate weight for right side
+  for (const char of right) {
+    rightWeight += weightMap[char] || 1; // Use default weight of 1 for other characters
+  }
+
+  // Determine balance
+  if (leftWeight > rightWeight) {
+    return "Left";
+  } else if (rightWeight > leftWeight) {
+    return "Right";
+  } else {
+    return "Balance";
+  }
+}
+
+// Example usage:
+const result = balance("!?!!,!", "!??");
+console.log(result); // Output will be "Left", "Right", or "Balance" based on the input values
