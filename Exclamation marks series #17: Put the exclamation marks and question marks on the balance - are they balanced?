@@ -23,7 +23,16 @@ function balance(left, right) {
     return "Balance";
   }
 }
+//
+def balance(left, right):
+    weight_map = {'!': 2, '?': 3}
 
-// Example usage:
-const result = balance("!?!!,!", "!??");
-console.log(result); // Output will be "Left", "Right", or "Balance" based on the input values
+    left_weight = sum(weight_map.get(char, 1) for char in left)
+    right_weight = sum(weight_map.get(char, 1) for char in right)
+
+    if left_weight > right_weight:
+        return "Left"
+    elif right_weight > left_weight:
+        return "Right"
+    else:
+        return "Balance"
