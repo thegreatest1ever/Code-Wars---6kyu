@@ -1,0 +1,31 @@
+function meeting(s) {
+  // Split the string by ';'
+  const names = s.toUpperCase().split(';');
+
+  // Map through the names to extract first and last names
+  const formattedNames = names.map(name => {
+    // Split each name by ':'
+    const [firstName, lastName] = name.split(':');
+    return [lastName, firstName];
+  });
+
+  // Sort the formatted names by last name, then by first name
+  formattedNames.sort((a, b) => {
+    // If last names are the same, sort by first name
+    if (a[0] === b[0]) {
+      return a[1].localeCompare(b[1]);
+    }
+    // Otherwise, sort by last name
+    return a[0].localeCompare(b[0]);
+  });
+
+  // Create the final result with names in the required format
+  const result = formattedNames.map(name => `(${name.join(', ')})`).join('');
+
+  return result;
+}
+
+// Example usage:
+const guests = "John:Doe;Anna:Smith;Peter:Griffin";
+const formattedGuests = meeting(guests);
+console.log(formattedGuests); // Output: (DOE, JOHN)(SMITH, ANNA)(GRIFFIN, PETER)
