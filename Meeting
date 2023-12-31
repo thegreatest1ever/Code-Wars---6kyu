@@ -24,8 +24,19 @@ function meeting(s) {
 
   return result;
 }
-
-// Example usage:
-const guests = "John:Doe;Anna:Smith;Peter:Griffin";
-const formattedGuests = meeting(guests);
-console.log(formattedGuests); // Output: (DOE, JOHN)(SMITH, ANNA)(GRIFFIN, PETER)
+//
+def meeting(s):
+    # Split the string by ';'
+    names = s.upper().split(';')
+    
+    # Extract first and last names and format them
+    formatted_names = [name.split(':') for name in names]
+    formatted_names = [(last, first) for first, last in formatted_names]
+    
+    # Sort the formatted names by last name, then by first name
+    formatted_names.sort(key=lambda x: (x[0], x[1]))
+    
+    # Create the final result with names in the required format
+    result = ''.join(f"({last}, {first})" for last, first in formatted_names)
+    
+    return result
